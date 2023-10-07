@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Direccionamiento;
+use App\Http\Controllers\Productos\ProductoController;
 
 
 /*
@@ -50,6 +51,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/',[Direccionamiento::class, 'index']);
 Route::fallback([Direccionamiento::class,'index']);
 
+Route::prefix('productos')->group(function(){
+    Route::get('lista',[ProductoController::class,'index'])->name('productos.index');
+})->middleware(['auth','verified']);
 
 
 require __DIR__.'/auth.php';
