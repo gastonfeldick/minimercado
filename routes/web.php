@@ -53,6 +53,9 @@ Route::fallback([Direccionamiento::class,'index']);
 
 Route::prefix('productos')->group(function(){
     Route::get('lista',[ProductoController::class,'index'])->name('productos.index');
+    Route::get('crear',[ProductoController::class,'create'])->name('productos.create');
+    Route::post('guardar',[ProductoController::class,'store'])->name('productos.store');
+
 })->middleware(['auth','verified']);
 
 

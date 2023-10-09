@@ -73,10 +73,7 @@ const showingNavigationDropdown = ref(false);
                                     </template>
                                     <template #content>
                                         <DropdownLink :href="route('productos.index')"> Lista de Productos </DropdownLink>
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
-                                            Agregar Producto
-                                        </DropdownLink>
-                                        
+                                        <DropdownLink :href="route('productos.create')"> Agregar Producto </DropdownLink>
                                     </template>
                                 </Dropdown>
                             </div>
