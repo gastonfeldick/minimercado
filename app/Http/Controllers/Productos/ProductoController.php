@@ -11,7 +11,11 @@ use App\Models\Producto;
 class ProductoController extends Controller
 {
     function index(){
-        return Inertia::render('Productos/index');
+        $productos= array(
+            'nuevo'=>'hola'
+        );
+        $productos2= Producto::all();
+        return Inertia::render('Productos/index',['productos'=>$productos2]);
     }
 
     function create(){
