@@ -49,12 +49,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/',[Direccionamiento::class, 'index']);
-Route::fallback([Direccionamiento::class,'index']);
+//Route::fallback([Direccionamiento::class,'index']);
 
 Route::prefix('productos')->group(function(){
     Route::get('lista',[ProductoController::class,'index'])->name('productos.index');
     Route::get('crear',[ProductoController::class,'create'])->name('productos.create');
+    Route::get('editar/{id}',[ProductoController::class,'edit'])->name('productos.edit');
     Route::post('guardar',[ProductoController::class,'store'])->name('productos.store');
+    Route::post('actualizar',[ProductoController::class,'update'])->name('productos.update');
+    Route::post('eliminar',[ProductoController::class,'delete'])->name('productos.delete');
+
+    Route::prefix('ajax')->group(function(){
+        Route::get('get',[ProductoController::class,'getProductos'])->name('productos.get');
+    });
+
 
 })->middleware(['auth','verified']);
 
